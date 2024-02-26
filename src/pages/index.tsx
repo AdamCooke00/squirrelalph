@@ -22,7 +22,7 @@ export default function Home() {
         <main className={styles.main}>
           <div className={styles.banner}>
             <h1 className={styles.title}>SQRL Faucet</h1>
-            <Image src="/sqrl.png" alt="sqrl" width="250" height="250" />
+            <Image src="/squirrellogo.png" alt="sqrl" width={250} height={250} />
           </div>
           <div className={styles.description}>
             <p>Your passive-aggresive backyard squirrel</p>

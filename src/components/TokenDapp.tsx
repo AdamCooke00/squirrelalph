@@ -43,7 +43,9 @@ export const TokenDapp: FC<{
         <form onSubmit={handleWithdrawSubmit}>
           <>
             <div className={styles.buttonCenterer}>
-              <input className={styles.claimbtn} type="submit" disabled={!!ongoingTxId} value="Claim Free SQRL" />
+              {!ongoingTxId && (
+                <input className={styles.claimbtn} type="submit" disabled={!!ongoingTxId} value="Claim Free SQRL" />
+              )}
             </div>
             <h2>{config.network[0].toUpperCase() + config.network.substring(1).toLowerCase()}</h2>
             <table>
