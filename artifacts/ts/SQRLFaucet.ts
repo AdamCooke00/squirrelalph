@@ -24,16 +24,17 @@ import {
   ContractInstance,
   getContractEventsCurrentCount,
 } from "@alephium/web3";
-import { default as TokenFaucetContractJson } from "../TokenFaucet.ral.json";
+import { default as SQRLFaucetContractJson } from "../SQRLFaucet.ral.json";
 import { getContractByCodeHash } from "./contracts";
 
 // Custom types for the contract
-export namespace TokenFaucetTypes {
+export namespace SQRLFaucetTypes {
   export type Fields = {
     symbol: HexString;
     name: HexString;
     decimals: bigint;
     supply: bigint;
+    owner: Address;
     balance: bigint;
   };
 
@@ -78,20 +79,24 @@ export namespace TokenFaucetTypes {
 }
 
 class Factory extends ContractFactory<
-  TokenFaucetInstance,
-  TokenFaucetTypes.Fields
+  SQRLFaucetInstance,
+  SQRLFaucetTypes.Fields
 > {
-  eventIndex = { Withdraw: 0 };
-  consts = { ErrorCodes: { InvalidWithdrawAmount: BigInt(0) } };
+  getInitialFieldsWithDefaultValues() {
+    return this.contract.getInitialFieldsWithDefaultValues() as SQRLFaucetTypes.Fields;
+  }
 
-  at(address: string): TokenFaucetInstance {
-    return new TokenFaucetInstance(address);
+  eventIndex = { Withdraw: 0 };
+  consts = { ErrorCodes: { InvalidAmount: BigInt(0) } };
+
+  at(address: string): SQRLFaucetInstance {
+    return new SQRLFaucetInstance(address);
   }
 
   tests = {
     getSymbol: async (
       params: Omit<
-        TestContractParams<TokenFaucetTypes.Fields, never>,
+        TestContractParams<SQRLFaucetTypes.Fields, never>,
         "testArgs"
       >
     ): Promise<TestContractResult<HexString>> => {
@@ -99,7 +104,7 @@ class Factory extends ContractFactory<
     },
     getName: async (
       params: Omit<
-        TestContractParams<TokenFaucetTypes.Fields, never>,
+        TestContractParams<SQRLFaucetTypes.Fields, never>,
         "testArgs"
       >
     ): Promise<TestContractResult<HexString>> => {
@@ -107,7 +112,7 @@ class Factory extends ContractFactory<
     },
     getDecimals: async (
       params: Omit<
-        TestContractParams<TokenFaucetTypes.Fields, never>,
+        TestContractParams<SQRLFaucetTypes.Fields, never>,
         "testArgs"
       >
     ): Promise<TestContractResult<bigint>> => {
@@ -115,7 +120,7 @@ class Factory extends ContractFactory<
     },
     getTotalSupply: async (
       params: Omit<
-        TestContractParams<TokenFaucetTypes.Fields, never>,
+        TestContractParams<SQRLFaucetTypes.Fields, never>,
         "testArgs"
       >
     ): Promise<TestContractResult<bigint>> => {
@@ -123,14 +128,14 @@ class Factory extends ContractFactory<
     },
     balance: async (
       params: Omit<
-        TestContractParams<TokenFaucetTypes.Fields, never>,
+        TestContractParams<SQRLFaucetTypes.Fields, never>,
         "testArgs"
       >
     ): Promise<TestContractResult<bigint>> => {
       return testMethod(this, "balance", params);
     },
     withdraw: async (
-      params: TestContractParams<TokenFaucetTypes.Fields, { amount: bigint }>
+      params: TestContractParams<SQRLFaucetTypes.Fields, { amount: bigint }>
     ): Promise<TestContractResult<null>> => {
       return testMethod(this, "withdraw", params);
     },
@@ -138,22 +143,22 @@ class Factory extends ContractFactory<
 }
 
 // Use this object to test and deploy the contract
-export const TokenFaucet = new Factory(
+export const SQRLFaucet = new Factory(
   Contract.fromJson(
-    TokenFaucetContractJson,
-    "=20-2+67=101+3a0007e02=1+75468652063757272656e742062616c616e63652069732000=46",
-    "a3309aa3a0dbd0c53b67a0c422316dcbc0571d8fa5f9ea2ab374b5c110f4efe2"
+    SQRLFaucetContractJson,
+    "=20-2+9a=101+aa000=1+e02175468652063757272656e742062616c616e63652069732000=11+8=1+e0140245468652063616c6c6572206973206e6f742074686520636f6e7472616374206f776e6572=56",
+    "536fedead7c895ceabcee927b3c8f199a16f8f62630cbfc2789a8d1c578a9e19"
   )
 );
 
 // Use this class to interact with the blockchain
-export class TokenFaucetInstance extends ContractInstance {
+export class SQRLFaucetInstance extends ContractInstance {
   constructor(address: Address) {
     super(address);
   }
 
-  async fetchState(): Promise<TokenFaucetTypes.State> {
-    return fetchContractState(TokenFaucet, this);
+  async fetchState(): Promise<SQRLFaucetTypes.State> {
+    return fetchContractState(SQRLFaucet, this);
   }
 
   async getContractEventsCurrentCount(): Promise<number> {
@@ -161,11 +166,11 @@ export class TokenFaucetInstance extends ContractInstance {
   }
 
   subscribeWithdrawEvent(
-    options: EventSubscribeOptions<TokenFaucetTypes.WithdrawEvent>,
+    options: EventSubscribeOptions<SQRLFaucetTypes.WithdrawEvent>,
     fromCount?: number
   ): EventSubscription {
     return subscribeContractEvent(
-      TokenFaucet.contract,
+      SQRLFaucet.contract,
       this,
       options,
       "Withdraw",
@@ -175,10 +180,10 @@ export class TokenFaucetInstance extends ContractInstance {
 
   methods = {
     getSymbol: async (
-      params?: TokenFaucetTypes.CallMethodParams<"getSymbol">
-    ): Promise<TokenFaucetTypes.CallMethodResult<"getSymbol">> => {
+      params?: SQRLFaucetTypes.CallMethodParams<"getSymbol">
+    ): Promise<SQRLFaucetTypes.CallMethodResult<"getSymbol">> => {
       return callMethod(
-        TokenFaucet,
+        SQRLFaucet,
         this,
         "getSymbol",
         params === undefined ? {} : params,
@@ -186,10 +191,10 @@ export class TokenFaucetInstance extends ContractInstance {
       );
     },
     getName: async (
-      params?: TokenFaucetTypes.CallMethodParams<"getName">
-    ): Promise<TokenFaucetTypes.CallMethodResult<"getName">> => {
+      params?: SQRLFaucetTypes.CallMethodParams<"getName">
+    ): Promise<SQRLFaucetTypes.CallMethodResult<"getName">> => {
       return callMethod(
-        TokenFaucet,
+        SQRLFaucet,
         this,
         "getName",
         params === undefined ? {} : params,
@@ -197,10 +202,10 @@ export class TokenFaucetInstance extends ContractInstance {
       );
     },
     getDecimals: async (
-      params?: TokenFaucetTypes.CallMethodParams<"getDecimals">
-    ): Promise<TokenFaucetTypes.CallMethodResult<"getDecimals">> => {
+      params?: SQRLFaucetTypes.CallMethodParams<"getDecimals">
+    ): Promise<SQRLFaucetTypes.CallMethodResult<"getDecimals">> => {
       return callMethod(
-        TokenFaucet,
+        SQRLFaucet,
         this,
         "getDecimals",
         params === undefined ? {} : params,
@@ -208,10 +213,10 @@ export class TokenFaucetInstance extends ContractInstance {
       );
     },
     getTotalSupply: async (
-      params?: TokenFaucetTypes.CallMethodParams<"getTotalSupply">
-    ): Promise<TokenFaucetTypes.CallMethodResult<"getTotalSupply">> => {
+      params?: SQRLFaucetTypes.CallMethodParams<"getTotalSupply">
+    ): Promise<SQRLFaucetTypes.CallMethodResult<"getTotalSupply">> => {
       return callMethod(
-        TokenFaucet,
+        SQRLFaucet,
         this,
         "getTotalSupply",
         params === undefined ? {} : params,
@@ -219,10 +224,10 @@ export class TokenFaucetInstance extends ContractInstance {
       );
     },
     balance: async (
-      params?: TokenFaucetTypes.CallMethodParams<"balance">
-    ): Promise<TokenFaucetTypes.CallMethodResult<"balance">> => {
+      params?: SQRLFaucetTypes.CallMethodParams<"balance">
+    ): Promise<SQRLFaucetTypes.CallMethodResult<"balance">> => {
       return callMethod(
-        TokenFaucet,
+        SQRLFaucet,
         this,
         "balance",
         params === undefined ? {} : params,
@@ -231,14 +236,14 @@ export class TokenFaucetInstance extends ContractInstance {
     },
   };
 
-  async multicall<Calls extends TokenFaucetTypes.MultiCallParams>(
+  async multicall<Calls extends SQRLFaucetTypes.MultiCallParams>(
     calls: Calls
-  ): Promise<TokenFaucetTypes.MultiCallResults<Calls>> {
+  ): Promise<SQRLFaucetTypes.MultiCallResults<Calls>> {
     return (await multicallMethods(
-      TokenFaucet,
+      SQRLFaucet,
       this,
       calls,
       getContractByCodeHash
-    )) as TokenFaucetTypes.MultiCallResults<Calls>;
+    )) as SQRLFaucetTypes.MultiCallResults<Calls>;
   }
 }

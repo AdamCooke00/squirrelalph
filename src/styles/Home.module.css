@@ -5,16 +5,41 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
 }
 
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+}
+
+.banner h1 {
+  font-size: 4rem;
+  margin: 0;
+  line-height: 1.2;
+  word-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
+}
+
+.banner img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
 .description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
   font-size: 0.85rem;
   max-width: var(--max-width);
   width: 100%;
@@ -22,20 +47,68 @@
   font-family: var(--font-mono);
 }
 
-.description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .description p {
-  position: relative;
   margin: 0;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   background-color: rgba(var(--callout-rgb), 0.5);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
+}
+.description .links {
+  /* // put them in a row spaced evenly and make sure they arent touching */
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.description a {
+  padding: 0 1rem;
+  margin: 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: #f7f7f7;
+  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+  transition: background 200ms, border 200ms;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  max-width: var(--max-width);
+  width: 100%;
+  z-index: 2;
+  font-family: var(--font-mono);
+}
+
+.buttonCenterer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  max-width: var(--max-width);
+  width: 100%;
+  z-index: 2;
+  font-family: var(--font-mono);
+}
+.claimbtn {
+  /* Make a nice "Claim Button". Make it flash different colors on hover */
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.claimbtn:hover {
+  background-color: #dbcacc;
 }
 
 .code {
@@ -147,11 +220,7 @@
   inset: 0;
   padding: 1px;
   border-radius: var(--border-radius);
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--tile-start-rgb), 1),
-    rgba(var(--tile-end-rgb), 1)
-  );
+  background: linear-gradient(to bottom right, rgba(var(--tile-start-rgb), 1), rgba(var(--tile-end-rgb), 1));
   background-clip: content-box;
 }
 
@@ -230,11 +299,7 @@
     border-radius: 0;
     border: none;
     border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
+    background: linear-gradient(to bottom, rgba(var(--background-start-rgb), 1), rgba(var(--callout-rgb), 0.5));
     background-clip: padding-box;
     backdrop-filter: blur(24px);
   }
@@ -245,11 +310,7 @@
     inset: auto 0 0;
     padding: 2rem;
     height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
+    background: linear-gradient(to bottom, transparent 0%, rgb(var(--background-end-rgb)) 40%);
     z-index: 1;
   }
 }

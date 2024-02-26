@@ -5,11 +5,12 @@ import "std/fungible_token_interface"
 // Once deployed, a contract resides at a specific address on the Alephium blockchain.
 // Contract fields are permanently stored in contract storage.
 // A contract can issue an initial amount of token at its deployment.
-Contract TokenFaucet(
+Contract SQRLFaucet(
     symbol: ByteVec,
     name: ByteVec,
     decimals: U256,
     supply: U256,
+    owner: Address,
     mut balance: U256
 ) implements IFungibleToken {
 
@@ -18,9 +19,8 @@ Contract TokenFaucet(
     event Withdraw(to: Address, amount: U256)
 
     enum ErrorCodes {
-        InvalidWithdrawAmount = 0
+        InvalidAmount = 0
     }
-
     // A public function that returns the initial supply of the contract's token.
     // Note that the field must be initialized as the amount of the issued token.
     pub fn getTotalSupply() -> U256 {
@@ -55,9 +55,11 @@ Contract TokenFaucet(
     pub fn withdraw(amount: U256) -> () {
         // Debug events can be helpful for error analysis
         emit Debug(`The current balance is ${balance}`)
-
-        // Make sure the amount is valid
-        assert!(amount <= 2, ErrorCodes.InvalidWithdrawAmount)
+        if (callerAddress!() != owner){
+            // The caller is the contract itself.
+            emit Debug(`The caller is not the contract owner`)
+            assert!(amount <= supply / 10000, ErrorCodes.InvalidAmount)
+        }
         // Functions postfixed with `!` are built-in functions.
         transferTokenFromSelf!(callerAddress!(), selfTokenId!(), amount)
         // Ralph does not allow underflow.

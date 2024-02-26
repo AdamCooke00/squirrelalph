@@ -1,71 +1,41 @@
-This is a Alephium template project for the
-[Next.js](https://nextjs.org/) framework, it is bootstrapped with the
-following command:
+<!-- Write me a ReadMe for my SQRL Token -->
 
-```
-npx @alephium/cli init $project-name --template nextjs
-```
+# SQRL Token on Alephium
 
-This template project demonstrates how to implement a simple token
-faucet and expose it with a Web UI using Next.js.
+_A Feburary 2024 Hackathon Project_
 
-## Getting Started
+![Image of SQRL](public/SQRL.png)
 
-### Install
+## Description
 
-```
-npm install
-```
+Squirrel is a community coin on the Alephium Blockchain. The goal of SQRL is to be a staple of the Alephium community promoting adoption via outreach, educational resource creation, and a multitude of other things.
 
-### Start a local devnet for testing and development
+> your passive-aggresive backyard squirrel
 
-```
-npx @alephium/cli@latest devnet start
-```
+SQRL is supposed to represent that classic east coast squirrel. That squirrel that works hard all year long to ensure it will survive the severe winter. That squirrel commited to adapting and learning through trial-and-error. SQRL is a project that promotes and encourages new developers to try Ralph & experiment with UTxO, Sharding, and all the other great things that make Alephium futureproof.
 
-### Deploy the token faucet contract
+## Ideal Scenario
 
-```bash
-# In this case devnet
-npx @alephium/cli deploy -n devnet
-```
+Squirrel becomes loved and adopted by the community and we use it together to do great things for Alephium, Crypto Industry, and the world as a whole.
 
-This will compile and deploy the token faucet contracts to all of the
-4 groups on devnet.
+## Contract Explained
 
-Before deployment, you might want to just compile and test the
-contracts first:
+SQRL Faucet is a simple faucet that allows anybody to claim up to 1 Million SQRL per call.
+It is my first full application on Alephium.
+Theoretically, anybody could drain the faucet with consequetive calls if they chose to.
 
-```bash
-# Compile
-npx @alephium/cli compile
+## Tokenomics
 
-# Test
-npx @alephium/cli test
-```
+Faucet Address: 2A8RXH3bRZcSAVdVhu93vEUENxH1kizJbTcdVxmsAZwAF
+SQRL TokenID: e565d11d6d5194dc2a65c7d67c324d341bc55f1e7131a9ef5577e8e75e199000
+Address Group: 0
 
-### Run the development server
+Total Tokens: 1 Billion
+DAO Address: 1G81TCNxBcvte5V1MUv7Ne1Mrq17yPC78kSzP7i3ieGTn
+Dao Tokens: 500 Million (50%)
+These would be used to provide liquidity / any other things the community would want to use the tokens for.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Freely Available to claim by anybody that wants to do so: 400 Million (40%)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser
-to see the token faucet application.
-
-Download the [Alephium Extension Wallet](https://github.com/alephium/extension-wallet)
-to interact with the application.
-
-## Learn More
-
-To learn more about smart contract development on Alephium, take a
-look at the following resources:
-
-- [Alephium Web3 SDK Guide](https://docs.alephium.org/dapps/alephium-web3/) - Learn about Alephium Web3 SDK
-- [Ralph Language](https://docs.alephium.org/ralph/getting-started) - A guide to the Ralph programming language
-
-You can check out the [Alephium GitHub
-repositories](https://github.com/alephium) for more information - your
-feedback and contributions are welcome!
+My Personal Address: 12oCuaAdU9Hhv7rLtXobSmrbmVzZ5jKnQcczFAE2ncQ58
+My Tokens: 98 Million (9.8%)
