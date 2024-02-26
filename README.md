@@ -26,16 +26,18 @@ Theoretically, anybody could drain the faucet with consequetive calls if they ch
 
 ## Tokenomics
 
-Faucet Address: 2A8RXH3bRZcSAVdVhu93vEUENxH1kizJbTcdVxmsAZwAF
-SQRL TokenID: e565d11d6d5194dc2a65c7d67c324d341bc55f1e7131a9ef5577e8e75e199000
-Address Group: 0
+- Faucet Address: 2A8RXH3bRZcSAVdVhu93vEUENxH1kizJbTcdVxmsAZwAF
+- SQRL TokenID: e565d11d6d5194dc2a65c7d67c324d341bc55f1e7131a9ef5577e8e75e199000
+- Address Group: 0
 
 Total Tokens: 1 Billion
-DAO Address: 1G81TCNxBcvte5V1MUv7Ne1Mrq17yPC78kSzP7i3ieGTn
-Dao Tokens: 500 Million (50%)
-These would be used to provide liquidity / any other things the community would want to use the tokens for.
 
-Freely Available to claim by anybody that wants to do so: 400 Million (40%)
+- Dao Tokens: 500 Million (50%)
 
-My Personal Address: 12oCuaAdU9Hhv7rLtXobSmrbmVzZ5jKnQcczFAE2ncQ58
-My Tokens: 98 Million (9.8%)
+  - DAO Address: 1G81TCNxBcvte5V1MUv7Ne1Mrq17yPC78kSzP7i3ieGTn
+  - These would be used to provide liquidity / any other things the community would want to use the tokens for.
+
+- Freely Available to claim by anybody: 400 Million (40%)
+
+- My Tokens: 98 Million (9.8%)
+  - My Personal Address: 12oCuaAdU9Hhv7rLtXobSmrbmVzZ5jKnQcczFAE2ncQ58
