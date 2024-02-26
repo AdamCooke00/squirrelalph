@@ -4,7 +4,7 @@
 
 _A Feburary 2024 Hackathon Project_
 
-![Image of SQRL](public/SQRL.png)
+![Image of SQRL](public/squirrellogo.png)
 
 ## Description
 
