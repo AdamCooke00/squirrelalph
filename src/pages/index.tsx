@@ -4,6 +4,7 @@ import styles from '@/styles/Home.module.css'
 import { TokenDapp } from '@/components/TokenDapp'
 import { AlephiumConnectButton, useWallet } from '@alephium/web3-react'
 import { tokenFaucetConfig } from '@/services/utils'
+import Image from 'next/image'
 
 export default function Home() {
   const { connectionStatus } = useWallet()
@@ -21,7 +22,7 @@ export default function Home() {
         <main className={styles.main}>
           <div className={styles.banner}>
             <h1 className={styles.title}>SQRL Faucet</h1>
-            <img src="/sqrl.png" alt="sqrl" width="100" height="100" />
+            <Image src="/sqrl.png" alt="sqrl" width="250" height="250" />
           </div>
           <div className={styles.description}>
             <p>Your passive-aggresive backyard squirrel</p>

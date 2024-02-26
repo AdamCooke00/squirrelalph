@@ -26,13 +26,6 @@
   word-spacing: 0.2rem;
   letter-spacing: 0.1rem;
 }
-
-.banner img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-}
-
 .description {
   display: flex;
   justify-content: center;
