@@ -34,7 +34,19 @@ export default function Home() {
             <AlephiumConnectButton />
           </div>
 
-          {connectionStatus === 'connected' && <TokenDapp config={tokenFaucetConfig} />}
+          {/* {connectionStatus === 'connected' && <TokenDapp config={tokenFaucetConfig} />} */}
+          {connectionStatus === 'connected' && (
+            <div style={{ textAlign: 'center' }}>
+              <h1>SOLD OUT!</h1>
+              <p>More to come extremely soon 👀🐿️</p>
+              <p style={{ backgroundColor: 'white', padding: '1rem', borderRadius: '1rem' }}>
+                {/* apply bold white colors to the link */}
+                <a href="https://www.ayin.app/swap" style={{ textDecoration: 'underline' }}>
+                  Click here to get SQRL on Ayin DEX under the ALPH/SQRL pair.
+                </a>
+              </p>
+            </div>
+          )}
         </main>
       </div>
     </>
