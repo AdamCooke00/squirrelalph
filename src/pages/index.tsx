@@ -25,7 +25,7 @@ export default function Home() {
             <Image src="/squirrellogo.png" alt="sqrl" width={250} height={250} />
           </div>
           <div className={styles.description}>
-            <p>Your passive-aggresive backyard squirrel</p>
+            <p>Your passive-aggressive backyard squirrel</p>
             <div className="links">
               <a href="https://www.x.com/squirrelALPH">Twitter</a>
               <a href="https://github.com/AdamCooke00/SquirrelALPH">GitHub</a>
